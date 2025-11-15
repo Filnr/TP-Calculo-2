@@ -1,17 +1,12 @@
 """
 Trabalho Prático - Integração por Frações Parciais
 Sistema interativo para resolução de integrais racionais
-Implementação sem SymPy e NumPy
 """
 
 import math
 import re
 
-
-# ==============================================================================
 # CLASSE AUXILIAR: POLINÔMIO
-# ==============================================================================
-
 class Polinomio:
     """Representa um polinômio através de seus coeficientes"""
     
@@ -60,11 +55,7 @@ class Polinomio:
         
         return "".join(termos) if termos else "0"
 
-
-# ==============================================================================
 # CLASSE AUXILIAR: SISTEMA LINEAR
-# ==============================================================================
-
 class SistemaLinear:
     """Resolve sistemas lineares pelo método de Gauss"""
     
@@ -109,12 +100,8 @@ class SistemaLinear:
                 x[i] /= A[i][i]
         
         return x
-
-
-# ==============================================================================
+    
 # FUNÇÃO DE PARSING
-# ==============================================================================
-
 def parsePolinomio(expressao):
     """
     Converte uma string de polinômio em lista de coeficientes.
@@ -292,11 +279,7 @@ def multiplicarPolinomios(p1, p2):
     
     return resultado
 
-
-# ==============================================================================
 # FUNÇÕES PRINCIPAIS
-# ==============================================================================
-
 def verificaFracao(numerador, denominador):
     """
     Verifica se a fração é válida para integração por frações parciais.
@@ -475,9 +458,6 @@ def decompoeEmFracoesParciais(numerador, denominador, tipo_fatoracao, info_fator
     B = num.coefs[0]
     
     decomposicao = []
-    
-    print(f"DEBUG: A={A}, B={B}, tipo={tipo_fatoracao}")
-    
     if tipo_fatoracao == 'linear_fatorado':
         # Trabalha diretamente com os fatores (ax + b)(cx + d)
         # (Ax + B) / [(a₁x + b₁)(a₂x + b₂)] = A₁/(a₁x + b₁) + A₂/(a₂x + b₂)
@@ -557,8 +537,8 @@ def decompoeEmFracoesParciais(numerador, denominador, tipo_fatoracao, info_fator
         
         # Sistema 4x4:
         # C₁ + C₂ = 0
-        # D₁ + D₂ = A
-        # p₂C₁ + p₁C₂ = 0
+        # D₁ + D₂ = 0
+        # p₂C₁ + p₁C₂ = A
         # p₂D₁ + p₁D₂ = B
         
         matriz = [
@@ -567,10 +547,49 @@ def decompoeEmFracoesParciais(numerador, denominador, tipo_fatoracao, info_fator
             [p2, 0, p1, 0],
             [0, p2, 0, p1]
         ]
-        vetor = [0, A, 0, B]
+        vetor = [0, 0, A, B]
         
         solucao = SistemaLinear.resolver(matriz, vetor)
         C1, D1, C2, D2 = solucao
+        
+        decomposicao.append({
+            'tipo': 'quadratico',
+            'numerador': (C1, D1),
+            'denominador': (1, 0, p1),
+            'forma': f"({C1:.4g}x + {D1:.4g}) / (x² + {p1:.4g})"
+        })
+        decomposicao.append({
+            'tipo': 'quadratico',
+            'numerador': (C2, D2),
+            'denominador': (1, 0, p2),
+            'forma': f"({C2:.4g}x + {D2:.4g}) / (x² + {p2:.4g})"
+        })
+    
+    elif tipo_fatoracao == 'misto_fatorado':
+        # CASO MISTO FATORADO: (x² + p₁)(x² + p₂) na forma fatorada
+        f1, f2 = info_fatoracao['fatores']        
+        # Extrai p1 e p2 dos fatores [c, 0, 1] que representam x² + c
+        p1 = f1[0]
+        p2 = f2[0]
+        # (Ax + B) / [(x² + p₁)(x² + p₂)] = (C₁x + D₁)/(x² + p₁) + (C₂x + D₂)/(x² + p₂)
+        # Expandindo: (C₁x + D₁)(x² + p₂) + (C₂x + D₂)(x² + p₁) = Ax + B
+        # C₁x³ + C₁p₂x + D₁x² + D₁p₂ + C₂x³ + C₂p₁x + D₂x² + D₂p₁ = Ax + B
+        # (C₁ + C₂)x³ + (D₁ + D₂)x² + (C₁p₂ + C₂p₁)x + (D₁p₂ + D₂p₁) = 0x³ + 0x² + Ax + B
+        
+        # Sistema 4x4:
+        # C₁ + C₂ = 0          (coef x³)
+        # D₁ + D₂ = 0          (coef x²)
+        # C₁p₂ + C₂p₁ = A     (coef x)
+        # D₁p₂ + D₂p₁ = B     (termo constante)
+        
+        matriz = [
+            [1, 0, 1, 0],
+            [0, 1, 0, 1],
+            [p2, 0, p1, 0],
+            [0, p2, 0, p1]
+        ]
+        vetor = [0, 0, A, B]
+        C1, D1, C2, D2 = SistemaLinear.resolver(matriz, vetor)
         
         decomposicao.append({
             'tipo': 'quadratico',
@@ -740,11 +759,7 @@ def imprimeResultado(resultado):
     print(f"   ∫ f(x) dx = {resultado['resultado_final']}")
     print("\n" + "="*70 + "\n")
 
-
-# ==============================================================================
 # INTERFACE INTERATIVA
-# ==============================================================================
-
 def menuInterativo():
     """
     Interface interativa para o usuário inserir os valores.
@@ -802,11 +817,7 @@ def menuInterativo():
             import traceback
             traceback.print_exc()
 
-
-# ==============================================================================
 # EXEMPLOS AUTOMÁTICOS
-# ==============================================================================
-
 def executarExemplos():
     """
     Executa exemplos automáticos para demonstração.
@@ -879,11 +890,7 @@ def executarExemplos():
         
         input("Pressione ENTER para continuar...")
 
-
-# ==============================================================================
 # MAIN
-# ==============================================================================
-
 def main():
     """
     Função principal - escolhe entre modo interativo ou exemplos.
