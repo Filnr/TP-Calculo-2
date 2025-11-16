@@ -20,7 +20,7 @@ Sistema computacional para resolução de integrais racionais utilizando o méto
 
 Este sistema resolve integrais do tipo:
 
-$$\int \frac{Ax + B}{\text{denominador}} \dx$$
+$$\int \frac{Ax + B}{\text{denominador}} \ dx$$
 
 Onde o denominador pode ser:
 - Produto de fatores lineares: `(x - x₁)(x - x₂)`
