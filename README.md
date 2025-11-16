@@ -68,7 +68,7 @@ Opção:
 
 ---
 
-## 🎮 Modos de Uso
+## Modos de Uso
 
 ### **Modo 1: Interativo**
 Permite inserir suas próprias integrais
@@ -88,7 +88,7 @@ Executa uma série de exemplos pré-configurados para demonstração.
 
 ---
 
-## 📝 Tipos de Integrais Suportadas
+## Tipos de Integrais Suportadas
 
 ### **Tipo 1: Fatores Lineares**
 $$\int \frac{Ax + B}{(x - x_1)(x - x_2)} \, dx$$
@@ -246,7 +246,7 @@ Integra cada termo da decomposição.
 
 ---
 
-## 📊 Formato de Entrada
+## Formato de Entrada
 
 ### **Notações Aceitas**
 
@@ -268,10 +268,10 @@ Integra cada termo da decomposição.
 ## Limitações
 
 ### **Não Suportado:**
-- ❌ Frações impróprias (grau numerador ≥ grau denominador)
-- ❌ Numeradores com grau > 1
-- ❌ Denominadores com grau ≠ 2 ou 4
-- ❌ Fatores repetidos (ex: `(x-1)²`)
+- Frações impróprias (grau numerador ≥ grau denominador)
+- Numeradores com grau > 1
+- Denominadores com grau ≠ 2 ou 4
+- Fatores repetidos (ex: `(x-1)²`)
 
 ### **Solução para Frações Impróprias:**
 Use divisão polinomial primeiro, depois integre o quociente e o resto separadamente.
@@ -319,13 +319,13 @@ Filipe Nery Rabelo
 Lucca Sander FrissoLucca Sander Frisso 
 ---
 
-## 📄 Licença
+## Licença
 
 Projeto acadêmico - Uso educacional livre.
 
 ---
 
-## 🆘 Suporte
+## Suporte
 
 Para dúvidas ou problemas:
 1. Verifique os exemplos na seção [Exemplos de Uso](#exemplos-de-uso)
