@@ -317,7 +317,8 @@ O código resolve automaticamente sistemas lineares usando:
 
 Filipe Nery Rabelo
 
-Lucca Sander FrissoLucca Sander Frisso 
+Lucca Sander Frisso
+
 ---
 
 ## Licença
