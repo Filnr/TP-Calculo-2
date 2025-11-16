@@ -46,7 +46,7 @@ O programa decompõe automaticamente a fração em frações parciais e calcula 
 # git clone https://github.com/Filnr/TP-Calculo-2.git
 ```
 
-### 2. Execute o programa
+### 2. Execute o programa no terminal
 ```bash
 python TP.py
 ```
