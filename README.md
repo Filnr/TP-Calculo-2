@@ -3,7 +3,7 @@
 Trabalho Prático desenvolvido para a disciplina de calculo 2
 Professor(a): Cláudia Silva Tavares
 
-Sistema computacional para resolução de integrais racionais utilizando o método de frações parciais, desenvolvido sem dependências de bibliotecas simbólicas (SymPy, NumPy).
+Sistema computacional para resolução de integrais racionais utilizando o método de frações parciais.
 
 ## Índice
 - [Sobre o Projeto](#sobre-o-projeto)
