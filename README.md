@@ -1,7 +1,10 @@
 # Sistema de Integração por Frações Parciais
 
 Trabalho Prático desenvolvido para a disciplina de calculo 2
+
 Professor(a): Cláudia Silva Tavares
+
+---
 
 ## Autores
 
