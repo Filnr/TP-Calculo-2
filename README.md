@@ -316,6 +316,7 @@ O código resolve automaticamente sistemas lineares usando:
 ## Autores
 
 Filipe Nery Rabelo
+
 Lucca Sander FrissoLucca Sander Frisso 
 ---
 
