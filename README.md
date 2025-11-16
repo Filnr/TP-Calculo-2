@@ -43,7 +43,7 @@ O programa decompõe automaticamente a fração em frações parciais e calcula 
 
 ### 1. Clone o repositório
 ```bash
-# git clone https://github.com/Filnr/TP-Calculo-2.git
+git clone https://github.com/Filnr/TP-Calculo-2.git
 ```
 
 ### 2. Execute o programa no terminal
