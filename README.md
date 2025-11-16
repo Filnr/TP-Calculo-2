@@ -3,6 +3,14 @@
 Trabalho Prático desenvolvido para a disciplina de calculo 2
 Professor(a): Cláudia Silva Tavares
 
+## Autores
+
+Filipe Nery Rabelo
+
+Lucca Sander Frisso
+
+---
+
 Sistema computacional para resolução de integrais racionais utilizando o método de frações parciais.
 
 ## Índice
@@ -310,14 +318,6 @@ Para integrar $\frac{P(x)}{Q(x)}$ onde $\text{grau}(P) < \text{grau}(Q)$:
 O código resolve automaticamente sistemas lineares usando:
 - **Eliminação de Gauss** com pivoteamento parcial
 - **Substituição reversa**
-
----
-
-## Autores
-
-Filipe Nery Rabelo
-
-Lucca Sander Frisso
 
 ---
 
